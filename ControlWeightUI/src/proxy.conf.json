@@ -1,0 +1,8 @@
+{
+    "/api":
+    {
+        "target": "http://loalhost:5001",
+        "secure": false
+    }
+
+}
