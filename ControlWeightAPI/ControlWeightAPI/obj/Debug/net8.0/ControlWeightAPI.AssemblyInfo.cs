@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ControlWeightAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bda79f78b8255cfba3897b0281a30e58e7bd50d7")]
 [assembly: System.Reflection.AssemblyProductAttribute("ControlWeightAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ControlWeightAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

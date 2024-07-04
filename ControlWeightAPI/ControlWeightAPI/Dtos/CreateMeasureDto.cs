@@ -2,7 +2,6 @@
 {
     public class CreateMeasureDto
     {
-        //public DateOnly MeasureDate { get; set; }
         public DateDto MeasureDate { get; set; }
         public double Weight { get; set; }
         public double Waist { get; set; }

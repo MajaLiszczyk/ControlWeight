@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "dmd+Ang2kprY7WaqGZoOia06F/zCe71GGUL8zj1C8JnupjOAu+3v515mnawgmO7p6eC+FyE3KACIDmSM4KDh3w==",
+  "dgSpecHash": "RYnRAYa4/RSTMDEs8tVz7vRPqX0VXJSOxPaA3EfC7ebVel3I+zo6bM94/+xgGuZt3ygCMItRhR/GDplu88fbmA==",
   "success": true,
-  "projectFilePath": "C:\\STUDIA\\moje projekty\\mz\\api\\ControlWeightAPI\\ControlWeightAPI\\ControlWeightAPI.csproj",
+  "projectFilePath": "C:\\STUDIA\\moje projekty\\mz\\na nowy github v2\\api\\ControlWeightAPI\\ControlWeightAPI\\ControlWeightAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Maja\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\Maja\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",

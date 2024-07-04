@@ -3,9 +3,6 @@
     public class Measure
     {
         public int Id { get; set; }
-       /// <summary>
-       /// public DateOnly MeasureDate { get; set; }
-       /// </summary>
         public DateTime MeasureDate { get; set; }
         public double Weight { get; set; }
         public double Waist { get; set; }

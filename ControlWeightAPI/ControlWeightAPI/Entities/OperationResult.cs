@@ -11,9 +11,5 @@
             Errors = new List<String>();
 
         }
-        /* public OperationResult(bool iS, List<String> m) { 
-             IsSuccess = iS;
-             Messages = m;
-         }*/
     }
 }

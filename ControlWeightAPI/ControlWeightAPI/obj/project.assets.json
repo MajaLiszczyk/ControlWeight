@@ -4143,11 +4143,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\STUDIA\\moje projekty\\mz\\api\\ControlWeightAPI\\ControlWeightAPI\\ControlWeightAPI.csproj",
+      "projectUniqueName": "C:\\STUDIA\\moje projekty\\mz\\na nowy github v2\\api\\ControlWeightAPI\\ControlWeightAPI\\ControlWeightAPI.csproj",
       "projectName": "ControlWeightAPI",
-      "projectPath": "C:\\STUDIA\\moje projekty\\mz\\api\\ControlWeightAPI\\ControlWeightAPI\\ControlWeightAPI.csproj",
+      "projectPath": "C:\\STUDIA\\moje projekty\\mz\\na nowy github v2\\api\\ControlWeightAPI\\ControlWeightAPI\\ControlWeightAPI.csproj",
       "packagesPath": "C:\\Users\\Maja\\.nuget\\packages\\",
-      "outputPath": "C:\\STUDIA\\moje projekty\\mz\\api\\ControlWeightAPI\\ControlWeightAPI\\obj\\",
+      "outputPath": "C:\\STUDIA\\moje projekty\\mz\\na nowy github v2\\api\\ControlWeightAPI\\ControlWeightAPI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Maja\\AppData\\Roaming\\NuGet\\NuGet.Config",

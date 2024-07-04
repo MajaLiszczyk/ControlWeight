@@ -1,4 +1,17 @@
-<div>
-    <h1>About application</h1>
-    <a [routerLink]="['/main/menu']">Back to menu</a>
+<div class="full-height-div" style=" background-image: url(../../../assets/images/background.jpg); background-size: cover; background-repeat: no-repeat; background-position: center;">
+    <div class="d-flex flex-column align-items-center mx-5" style="background-color: white;">
+        <h1 class="display-1 mb-5 mt-5">About application</h1>
+        <div class="mb-5 mt-4">
+            <a [routerLink]="['/main/menu']" class="btn btn-secondary">Back to menu</a>
+        </div>
+        <!--<div class="w-25 mt-3 mb-3"> -->
+        <!--<div [ngStyle]="{ 'background-image': 'url(../../../assets/images/' + background.img + ')' }"> -->
+        <div class="mx-5"> 
+            Our application is designed to monitor changes in your body—weight and measurements. 
+            You can easily enter your measurements for a given day, and they will be saved. 
+            You can also view the history of your measurements, edit them, or delete them. 
+            The application is very user-friendly. We hope it helps you achieve your desired results. 
+            Enjoy!
+        </div>
+    </div>
 </div>

@@ -1,7 +1,13 @@
-<div>
-    <h1>Main menu</h1>
-    <a [routerLink]="['/measures-and-history/measures-and-history']">Measures and history</a>
-<br/>
-    <a [routerLink]="['/main/about']">About</a>
-
+<div class="full-height-div h-100" style=" background-image: url(../../../assets/images/background.jpg); background-size: cover; background-repeat: no-repeat; background-position: center;">
+    <div class="d-flex flex-column align-items-center mx-5" style="background-color: white;">
+        <h1 class="display-1 mb-5 mt-5">Control your weight</h1>
+    
+        <div class="w-50 d-flex flex-column align-items-center mt-5 mb-5">
+            <a [routerLink]="['/measures-and-history/measures-and-history']" class="btn btn-success w-50">Your measures</a>
+        </div>
+        
+        <div class="w-50 d-flex flex-column align-items-center mb-5">
+            <a [routerLink]="['/main/about']" class="btn btn-success w-50">About</a>
+        </div>
+    </div>
 </div>

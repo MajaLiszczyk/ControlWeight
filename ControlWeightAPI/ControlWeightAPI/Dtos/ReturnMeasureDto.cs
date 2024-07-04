@@ -3,7 +3,6 @@
     public class ReturnMeasureDto
     {
         public int Id { get; set; }
-        // public DateOnly MeasureDate { get; set; }
         public DateTime MeasureDate { get; set; }
         public double Weight { get; set; }
         public double Waist { get; set; }

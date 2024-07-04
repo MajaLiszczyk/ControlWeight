@@ -10,7 +10,6 @@ namespace ControlWeightAPI
         {
             CreateMap<Measure, ReturnMeasureDto>()
                 .ForMember(m => m.Id, d => d.MapFrom(t => t.Id))
-                //.ForMember(d => d.MeasureDate, m => m.MapFrom(t => t.MeasureDate))
                 .ForMember(m => m.Weight, d => d.MapFrom(t => t.Weight))
                 .ForMember(m => m.Waist, d => d.MapFrom(t => t.Waist))
                 .ForMember(m => m.Hips, d => d.MapFrom(t => t.Hips))
@@ -20,7 +19,6 @@ namespace ControlWeightAPI
 
             CreateMap<CreateMeasureDto, Measure>()
                 .ForMember(d => d.Weight, m => m.MapFrom(t => t.Weight))
-                //.ForMember(d => d.MeasureDate, m => m.MapFrom(t => t.MeasureDate))
                 .ForMember(d => d.Waist, m => m.MapFrom(t => t.Waist))
                 .ForMember(d => d.Hips, m => m.MapFrom(t => t.Hips))
                 .ForMember(d => d.Thigh, m => m.MapFrom(t => t.Thigh))
@@ -36,11 +34,6 @@ namespace ControlWeightAPI
                 .ForMember(d => d.Year, d => d.MapFrom(t => t.Year))
                 .ForMember(d => d.Month, d => d.MapFrom(t => t.Month))
                 .ForMember(d => d.Day, d => d.MapFrom(t => t.Day));
-
-            // CreateMap<DateDto, DateTime>().ConvertUsing((src, _) => new DateTime(src.Year, src.Month, src.Day));
-
-
-
         }
     }
 }

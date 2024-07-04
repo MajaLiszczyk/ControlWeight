@@ -6,7 +6,6 @@ using System.Linq.Expressions;
 
 namespace ControlWeightAPI.Services
 {
-    //zby instancje tego serwisu wstrzyknac do kontrolera, trzeba wydzielic interfejs, a nastepnie zarejestrowac go w kontenerze zaleznosci w Program.cs
     public class MeasureService : IMeasureService
     {
         private readonly ControlWeightDbContext _dbContext;
@@ -16,40 +15,71 @@ namespace ControlWeightAPI.Services
             _dbContext = dbContext;
             _mapper = mapper;
         }
-        public ReturnMeasureDto GetById(int id)
+        public ReturnMeasureDto? GetById(int id)
         {
-            var measure = _dbContext
-               .Measures.
-               FirstOrDefault(m => m.Id == id);
-            if (measure == null)
-            {*
+            var meassureDto = new ReturnMeasureDto();
+            try
+            {
+                var result = new OperationResult();
+
+                var measure = _dbContext
+                   .Measures.
+                   FirstOrDefault(m => m.Id == id);
+                meassureDto = _mapper.Map<ReturnMeasureDto>(measure);
+            }
+            catch(Exception ex)
+            {
                 return null;
             }
-            var result = _mapper.Map<ReturnMeasureDto>(measure);
-            return result;
+            return meassureDto;
         }
 
-
-        public List<ReturnMeasureDto> GetAll()
+        public List<ReturnMeasureDto>? GetAll()
         {
-            var measures = _dbContext
+            var measuresDto = new List<ReturnMeasureDto>();
+            try
+            {
+                var measures = _dbContext
                .Measures.OrderByDescending(x => x.MeasureDate)
                .ToList();
-            var measuresDto = _mapper.Map<List<ReturnMeasureDto>>(measures);
+                measuresDto = _mapper.Map<List<ReturnMeasureDto>>(measures);
+            }
+            catch(Exception ex)
+            {
+                return null;
+            }
             return measuresDto;
         }
 
-        //public int Create(CreateMeasureDto dto)
         public OperationResult Create(CreateMeasureDto dto)
         {
             var measure = _mapper.Map<Measure>(dto);
             var result = new OperationResult();
-            if(dto.Hips>500 || dto.Hips < 10)
+            if(dto.Weight>500 || dto.Weight < 10)
+            {
+                result.Errors.Add("Weight value should be between 10 and 500");
+            }
+            if (dto.Waist > 500 || dto.Waist < 10)
+            {
+                result.Errors.Add("Waist value should be between 10 and 500");
+            }
+            if (dto.Hips > 500 || dto.Hips < 10)
             {
                 result.Errors.Add("Hips value should be between 10 and 500");
             }
-            //ify dla kazdego wymiaru. Sprawdzic alidacje z frontem
-            //if dla daty, czy unikalna itp
+            if (dto.Thigh > 500 || dto.Thigh < 10)
+            {
+                result.Errors.Add("Thigh value should be between 10 and 500");
+            }
+            if (dto.Arm > 500 || dto.Arm < 10)
+            {
+                result.Errors.Add("Arm value should be between 10 and 500");
+            }
+            if (dto.Chest > 500 || dto.Chest < 10)
+            {
+                result.Errors.Add("Chest value should be between 10 and 500");
+            }
+
             List<ReturnMeasureDto> history = GetAll();
             var measuresSameDate = _dbContext.Measures.Where(y => y.MeasureDate == measure.MeasureDate);
             if (measuresSameDate.Count() > 0)
@@ -81,8 +111,6 @@ namespace ControlWeightAPI.Services
             return result;
         }
         
-        // bool informuje czy zasob zostal usuniety, czy nie istnieje i nie zostal usuniety
-       // public bool Delete(int id)
         public OperationResult Delete(int id)
         {
             var result = new OperationResult();
@@ -109,21 +137,38 @@ namespace ControlWeightAPI.Services
         public OperationResult Update(UpdateMeasureDto dto)
         {
             var result = new OperationResult();
-            //ponizej walidacja merytoryczna (czy ma sens dla Kowlaskiego).Zasady biznesowe
-            if(dto.Hips>500 || dto.Hips<10)
+            if (dto.Weight > 500 || dto.Weight < 10)
             {
-                result.Errors.Add("Hips value should be between 10 and 500"); 
+                result.Errors.Add("Weight value should be between 10 and 500");
             }
-            //ify dla kazdego wymiaru
-            //if dla daty czy unikalna itp
+            if (dto.Waist > 500 || dto.Waist < 10)
+            {
+                result.Errors.Add("Waist value should be between 10 and 500");
+            }
+            if (dto.Hips > 500 || dto.Hips < 10)
+            {
+                result.Errors.Add("Hips value should be between 10 and 500");
+            }
+            if (dto.Thigh > 500 || dto.Thigh < 10)
+            {
+                result.Errors.Add("Thigh value should be between 10 and 500");
+            }
+            if (dto.Arm > 500 || dto.Arm < 10)
+            {
+                result.Errors.Add("Arm value should be between 10 and 500");
+            }
+            if (dto.Chest > 500 || dto.Chest < 10)
+            {
+                result.Errors.Add("Chest value should be between 10 and 500");
+            }
 
-            result.IsSuccess = result.Errors.Count == 0; //jesli nie ma zadnych messages, to sukces
+            result.IsSuccess = result.Errors.Count == 0;
             if(!result.IsSuccess)
             {
                 result.UserMessage = "The form contains incorrect values: ";
                 return result;
             }
-            //ponizej walidacja techniczna. Lapanie bledów technicznych, informatycznych
+
             var measure = _dbContext
              .Measures.
              FirstOrDefault(m => m.Id == dto.Id);
@@ -131,7 +176,6 @@ namespace ControlWeightAPI.Services
             {
                 result.IsSuccess=false;
                 result.UserMessage = "Measure can not be updated";
-                 // jak bede robic logi , to tu loguje dla technika 
                 return result;
             }
             try
@@ -151,9 +195,7 @@ namespace ControlWeightAPI.Services
             {
                 result.IsSuccess = false;
                 result.UserMessage = "Error occured";
-                //jak beda logi, to podac tresc exception:  $"Error during update measure id:{measure.Id}: {ex.Message}"
             }
-           
             return result;
         }
     }

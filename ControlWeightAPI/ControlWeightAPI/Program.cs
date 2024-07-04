@@ -6,16 +6,11 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
-
-// Add services to the container.
-//builder.Services.AddHttpContextAccessor();
-builder.Services.AddDbContext<ControlWeightDbContext>(/*options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))*/);
-
+builder.Services.AddDbContext<ControlWeightDbContext>();
 builder.Services.AddControllers();
 builder.Services.AddTransient<IWeatherForecastService, WeatherForecastService>();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddScoped<IMeasureService, MeasureService>();
-
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(name: MyAllowSpecificOrigins,

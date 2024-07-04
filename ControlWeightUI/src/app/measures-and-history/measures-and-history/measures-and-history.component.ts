@@ -26,7 +26,6 @@ export class MeasuresAndHistoryComponent {
   editableMeasure: Measure;
   actualMeasure: Measure;
 
-  //constructor(private http:HttpClient, private formBuilder: FormBuilder){ 
   constructor(private http:HttpClient, private formBuilder: FormBuilder, private adapter: NgbDateNativeAdapter){
   }
 
@@ -45,12 +44,12 @@ export class MeasuresAndHistoryComponent {
     this.measureForm = this.formBuilder.group({
       id: Number,
       measureDate: new FormControl('', {validators: [Validators.required]}),
-      weight: new FormControl('', {validators: [Validators.max(500), Validators.required]}),
-      waist: new FormControl('', {validators: [Validators.max(300), Validators.required]}),
-      hips: new FormControl('', {validators: [Validators.max(500), Validators.required]}),
-      thigh: new FormControl('', {validators: [Validators.max(200), Validators.required]}),
-      arm: new FormControl('', {validators: [Validators.max(200), Validators.required]}),
-      chest: new FormControl('', {validators: [Validators.max(300), Validators.required]})
+      weight: new FormControl('', {validators: [Validators.min(10), Validators.max(500), Validators.required]}),
+      waist: new FormControl('', {validators: [Validators.min(10), Validators.max(500), Validators.required]}),
+      hips: new FormControl('', {validators: [Validators.min(10), Validators.max(500), Validators.required]}),
+      thigh: new FormControl('', {validators: [Validators.min(10), Validators.max(500), Validators.required]}),
+      arm: new FormControl('', {validators: [Validators.min(10), Validators.max(500), Validators.required]}),
+      chest: new FormControl('', {validators: [Validators.min(10), Validators.max(500), Validators.required]})
     });
 
     this.isLoaded = true;
@@ -71,6 +70,7 @@ export class MeasuresAndHistoryComponent {
 
   add(){
     this.measureForm.reset();
+    this.measureForm.enable();
     this.formDate.setValue(this.toNgbDate(new Date()));
     this.operationResult = null;
     this.isFormVisible = true;
@@ -113,8 +113,8 @@ export class MeasuresAndHistoryComponent {
 
   fillForm(measure: Measure){
     this.formId.setValue(measure.id);
-    this.formDate.setValue(this.toNgbDate(measure.measureDate));
-    //this.formDate.setValue(measure.measureDate);
+    this.formDate.setValue(this.toNgbDate(measure.measureDate));    
+    this.formDate.disable();
     this.formWeight.setValue(measure.weight);
     this.formWaist.setValue(measure.waist);
     this.formHips.setValue(measure.hips);
