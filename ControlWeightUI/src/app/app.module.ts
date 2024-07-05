@@ -17,7 +17,7 @@ import { NgbDateAdapter, NgbDateNativeAdapter, NgbModule } from '@ng-bootstrap/n
     HttpClientModule,
     NgbModule,
   ],
-  //dodane
+
   providers: [
     NgbDateNativeAdapter
   ],

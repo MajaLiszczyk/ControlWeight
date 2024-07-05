@@ -12,12 +12,10 @@ import { NgbDateNativeAdapter, NgbDateStruct, NgbDateAdapter, NgbModule } from '
   styleUrl: './measures-and-history.component.css'
 })
 
-
 export class MeasuresAndHistoryComponent {
 
   readonly APIUrl="https://localhost:5001/api/measure";
   measures: Measure[] = [];
-
   measureForm: FormGroup;
   isLoaded: boolean = false;
   operationResult: OperationResult | null;
@@ -51,7 +49,6 @@ export class MeasuresAndHistoryComponent {
       arm: new FormControl('', {validators: [Validators.min(10), Validators.max(500), Validators.required]}),
       chest: new FormControl('', {validators: [Validators.min(10), Validators.max(500), Validators.required]})
     });
-
     this.isLoaded = true;
   }
 
@@ -76,6 +73,7 @@ export class MeasuresAndHistoryComponent {
     this.isFormVisible = true;
     this.editableMode = false;
   }
+
   cancel(){
     this.measureForm.reset();
     this.operationResult = null;
@@ -90,24 +88,15 @@ export class MeasuresAndHistoryComponent {
     this.operationResult = null;
     this.fillForm(measure);
   }
+
   delete(id: Number){
 
     this.http.delete<OperationResult>(this.APIUrl+"/Delete/"+id).subscribe( result => {
       this.operationResult = result;
       if(result.isSuccess){
-        this.getMeasures(); //aktaulizacja tabelki historii
+        this.getMeasures();
       }
-        /*next: data => {
-            this.operationResult = new OperationResult;
-            this.operationResult.isSuccess = true;
-            this.getMeasures();
-        },
-        error: error => {
-          this.operationResult = new OperationResult;
-          this.operationResult.isSuccess = false;
-          this.operationResult.errors.push(error.messages);
-        }*/
-      });
+    });
 
   } 
 
@@ -124,17 +113,13 @@ export class MeasuresAndHistoryComponent {
   }
 
   insert(){
-    if(this.measureForm.invalid){ //walidacje formularza (u gory sa) np. required itp. WSTEPNE SITO PRZED BACKENDZIE
-      this.measureForm.markAllAsTouched(); //powoduje, ze wszystkie pola sa jakby dotkniete przez uzytkownika, 
-                                           //co uruchamia walidacje dla tych pol 
-                                          //( w tym wypisuje komikaty, ok. linii 15-16 html)
+    if(this.measureForm.invalid){ 
+      this.measureForm.markAllAsTouched();
       return;
     }
     this.http.post<OperationResult>(this.APIUrl+"/CreateMeasure", this.measureForm.getRawValue()).subscribe(result =>{
     this.operationResult = result;
     if(result.isSuccess){
-      //this.operationResult.userMessage = "User message: Insert good" //wywalam userMessaage stad,
-                                                                       // bo juz na backendzie jest userMessage
       this.getMeasures();
       this.isFormVisible = false;
     }
@@ -149,11 +134,9 @@ export class MeasuresAndHistoryComponent {
     this.http.put<OperationResult>(this.APIUrl+"/Update", this.measureForm.getRawValue()).subscribe(result =>{
       this.operationResult = result;
       if(result.isSuccess){
-        this.getMeasures(); //aktaulizacja tabelki historii
+        this.getMeasures();
         this.isFormVisible = false;
       }
-      })
-
+    })
   }
-
 }

@@ -11,11 +11,7 @@
             <h2 class="display-7 d-flex justify-content-center mt-5 mb-3 pt-3 pb-3">Wpisz pomiary</h2>
             <form [formGroup]="measureForm" >
                 <div class="formGroup col-md-2 offset-md-5 d-flex justify-content-center">
-                    <!-- col d-flex justify-content-center -->
-                     <!-- <div class="col-xl-5"> -->
-                    <label class="col-md-5">Date</label>
-                     <!-- </div> -->
-                    
+                    <label class="col-md-5">Date</label>                    
                     <div class="input-group col-md-5">
                         <input formControlName="measureDate" class="form-control" placeholder="yyyy-mm-dd" aria-label="measure Date"
                         ngbDatepicker #measureDatePicker="ngbDatepicker"
@@ -24,7 +20,6 @@
                             <button class="btn btn-outline-secondary pi pi-calendar" (click)="measureDatePicker.toggle()" type="button"></button>
                         </div>
                     </div>
-                    
                 </div>
                 <div class="formGroup col-md-2  offset-md-5 d-flex justify-content-center">
                     <label class="col-md-5">Weight</label>
@@ -36,15 +31,12 @@
                             <span *ngIf="formWeight?.errors?.['max']">Max value: 500</span>
                             <span *ngIf="formWeight?.errors?.['required']">Required</span>
                         </div>
-    
                     </div>
-    
                 </div>
                 <div class="formGroup col-md-2 offset-md-5 d-flex justify-content-center">
                     <label class="col-md-5">Waist</label>
                     <div class="input-group col-md-5">
                         <input formControlName="waist" type="number" class="form-control" aria-label="waist"
-                    
                         [class.is-invalid]="formWaist.invalid && (formWaist.touched || formWaist.dirty)">
                         <div class="invalid-feedback">
                             <span *ngIf="formWaist?.errors?.['min']">Min value: 10</span>
@@ -64,8 +56,6 @@
                             <span *ngIf="formHips?.errors?.['required']">Required</span>
                         </div>
                     </div>
-    
-    
                 </div>
                 <div class="formGroup col-md-2 offset-md-5 d-flex justify-content-center">
                     <label class="col-md-5">Thigh</label>
@@ -77,12 +67,8 @@
                             <span *ngIf="formThigh?.errors?.['max']">Max value: 500</span>
                             <span *ngIf="formThigh?.errors?.['required']">Required</span>
                         </div>
-                    </div>
-    
-    
-                    
+                    </div>  
                 </div>
-    
                 <div class="formGroup col-md-2 offset-md-5 d-flex justify-content-center">
                     <label class="col-md-5">Arm</label>
                     <div class="input-group col-md-5">
@@ -93,10 +79,7 @@
                             <span *ngIf="formArm?.errors?.['max']">Max value: 500</span>
                             <span *ngIf="formArm?.errors?.['required']">Required</span>
                         </div>
-                    </div>
-    
-    
-                    
+                    </div>   
                 </div>
                 <div class="formGroup col-md-2 offset-md-5 d-flex justify-content-center">
                     <label class="col-md-5">Chest</label>
@@ -108,23 +91,16 @@
                             <span *ngIf="formChest?.errors?.['max']">Max value: 500</span>
                             <span *ngIf="formChest?.errors?.['required']">Required</span>
                         </div>
-                    </div>
-    
-                    
+                    </div> 
                 </div>
-                <div>
-                    
+                <div>   
                     <div class="d-flex justify-content-center mb-4">
                         <button *ngIf="editableMode" type="button" class="btn  btn-success float-right mx-2" (click)="save()">Save</button>
                         <button *ngIf="!editableMode" type="button" class="btn  btn-success float-right mx-2" (click)="insert()">Insert</button>
                         <button type="button" class="btn  btn-success float-right" (click)="cancel()">Cancel</button>
                     </div>
                 </div>
-                
-    
-    
-            </form>
-            
+            </form> 
         </div>
         <h3 class="display-7 fw-bold d-flex justify-content-center mt-3 mb-3 pt-3 pb-3">Your history</h3>
         <div class="d-flex justify-content-center" mx-2>
@@ -197,16 +173,11 @@
                         <button type="button" class="btn  btn-success float-right" (click)="edit(item)">Edit</button>
                         <button type="button" class="btn  btn-success float-right" (click)="delete(item.id)">Delete</button>
                     </td>
-    
                 </tr>
                 <tr *ngIf="measures.length === 0">
                     <td colspan="8">No data</td>
                 </tr>
-    
             </table>
         </div>
-
-    </div>
-    
+    </div>    
 </div>
-

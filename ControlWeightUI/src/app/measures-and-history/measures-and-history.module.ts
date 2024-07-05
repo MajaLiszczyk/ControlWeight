@@ -18,12 +18,9 @@ import { MeasuresAndHistoryComponent } from './measures-and-history/measures-and
     ReactiveFormsModule,
     NgbModule,
   ],
-  //ponizej dodane
+
   providers: [
     NgbDateNativeAdapter
   ],
-  /*providers: [
-    { provide: NgbDateAdapter, useClass: NgbDateNativeAdapter }
-  ],*/
 })
 export class MeasuresAndHistoryModule { }

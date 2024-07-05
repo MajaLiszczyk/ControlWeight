@@ -10,11 +10,18 @@ namespace ControlWeightAPI.Services
     {
         private readonly ControlWeightDbContext _dbContext;
         private readonly IMapper _mapper;
+
         public MeasureService(ControlWeightDbContext dbContext, IMapper mapper)
         {
             _dbContext = dbContext;
             _mapper = mapper;
         }
+
+        /// <summary>
+        /// Get measure by Id
+        /// </summary>
+        /// <param name="id">Requested measure Id</param>
+        /// <returns>Returns requested measure</returns>
         public ReturnMeasureDto? GetById(int id)
         {
             var meassureDto = new ReturnMeasureDto();
@@ -34,6 +41,10 @@ namespace ControlWeightAPI.Services
             return meassureDto;
         }
 
+        /// <summary>
+        /// Get all measures
+        /// </summary>
+        /// <returns>List of measures</returns>
         public List<ReturnMeasureDto>? GetAll()
         {
             var measuresDto = new List<ReturnMeasureDto>();
@@ -51,6 +62,11 @@ namespace ControlWeightAPI.Services
             return measuresDto;
         }
 
+        /// <summary>
+        /// Create new measure
+        /// </summary>
+        /// <param name="dto">New measure (dto - without Is - user can not set measure Id)</param>
+        /// <returns>Returns OperationResult (if there is success after action, list of errors and messages for user)</returns>
         public OperationResult Create(CreateMeasureDto dto)
         {
             var measure = _mapper.Map<Measure>(dto);
@@ -110,7 +126,12 @@ namespace ControlWeightAPI.Services
             }
             return result;
         }
-        
+
+        /// <summary>
+        /// Delete measure
+        /// </summary>
+        /// <param name="id">Requested measure Id</param>
+        /// <returns>Returns OperationResult (if there is success after action, list of errors and messages for user)</returns>
         public OperationResult Delete(int id)
         {
             var result = new OperationResult();
@@ -132,8 +153,13 @@ namespace ControlWeightAPI.Services
                 result.IsSuccess = false;
             }
             return result;
-        } 
+        }
 
+        /// <summary>
+        /// Update measure
+        /// </summary>
+        /// <param name="dto">Updated measure values(dto - without Date - user can not edit measure date)</param>
+        /// <returns>Returns OperationResult (if there is success after action, list of errors and messages for user)</returns>
         public OperationResult Update(UpdateMeasureDto dto)
         {
             var result = new OperationResult();
