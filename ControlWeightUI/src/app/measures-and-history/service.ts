@@ -16,8 +16,6 @@ export class Service{
     getMeasures(): Observable<Measure[]>{
         return this.http.get<Measure[]>(`{this.APIUrl}/GetAll`);
     }
-
-
 }
 
 
