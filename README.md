@@ -5,11 +5,11 @@ How to start:
 1.Backend:
     1.1 Create mssql database (If you use Visual Studio: Open ControlWebAPI, go to Tools -> NuGet Package Manager -> Package Maanger Console, send 'create-database' command)
     1.2. Execute migrations. Migrations files are available in ControlWeightAPI/ControlWeightAPI/Migrations (if you use Visual Studio, send 'update-database' command in Tools -> NuGet Package Manager -> Package Maanger Console. If you don't use Visual studio, open console, go to project directory, send 'dotnet ef database update' command. If you don't have EF Core CLI tool, first you have to install them: 'dotnet tool install --global dotnet-ef' command)
-    1.3. Check settings: 
+    1.3 Set your server and database name - connectionString settings in Entities -> ControlWeightDBContext.cs
+	1.4. Check settings: 
         - port settings in Properties directory-> launchSettings.json.
-        - connectionString settings in Entities -> ControlWeightDBContext.cs
         - port in options.AddPolicy() in Program.cs (4200 port is default port used by Angular project)
-    1.4. Run ControlWeightAPI
+    1.5. Run ControlWeightAPI
 
 2.Frontend:
     2.1 Check settings:

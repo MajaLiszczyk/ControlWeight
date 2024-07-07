@@ -1,6 +1,6 @@
-@ControlWeightAPI_HostAddress = http://localhost:5298
+@ControlWeightAPI_HostAddress = http://localhost:5001
 
-GET {{ControlWeightAPI_HostAddress}}/weatherforecast/
+GET {{ControlWeightAPI_HostAddress}}/api/measure/
 Accept: application/json
 
 ###

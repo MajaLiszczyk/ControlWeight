@@ -8,7 +8,6 @@ var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
 builder.Services.AddDbContext<ControlWeightDbContext>();
 builder.Services.AddControllers();
-builder.Services.AddTransient<IWeatherForecastService, WeatherForecastService>();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddScoped<IMeasureService, MeasureService>();
 builder.Services.AddCors(options =>

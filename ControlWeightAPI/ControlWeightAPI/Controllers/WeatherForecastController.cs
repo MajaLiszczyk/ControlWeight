@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Mvc;
+/*using Microsoft.AspNetCore.Mvc;
 
 namespace ControlWeightAPI.Controllers
 {
@@ -35,7 +35,7 @@ namespace ControlWeightAPI.Controllers
 
         //ActionResult<string>  - zwróci string oraz kod statusu
         public ActionResult<string> Hello([FromBody] string name)
-        {
+        { */
             // I sposób:
             // HttpContext.Response.StatusCode = 401;
             // return $"Hello {name}"; */
@@ -44,7 +44,7 @@ namespace ControlWeightAPI.Controllers
             //return StatusCode(401, $"Hello {name}");
 
             // III spsob:
-            return NotFound($"Hello {name}");
+           /* return NotFound($"Hello {name}");
         }
     }
-}
+} */
